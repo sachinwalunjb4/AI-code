@@ -1,0 +1,29 @@
+
+
+#load the jQuery library using javascript
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  
+
+    $(document).ready(function() {
+    // Example: Fetch USD to EUR exchange rate using exchangerate.host
+    $.ajax({
+        url: 'https://api.exchangerate.host/latest?base=USD&symbols=EUR',
+        method: 'GET',
+        success: function(response) {
+            if (response && response.rates && response.rates.EUR) {
+                console.log('USD to EUR:', response.rates.EUR);
+                // You can display it in the DOM as needed
+                $('#exchange-rate').text('USD to EUR: ' + response.rates.EUR);
+            }
+        },
+        error: function() {
+            console.error('Failed to fetch exchange rate.');
+        }
+    });
+});
+
+</script>
+
+<div id="exchange-rate">
+    <!-- Exchange rate will be displayed here -->
